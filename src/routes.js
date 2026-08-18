@@ -89,20 +89,20 @@ router.get('/registrations/search', (req, res) => {
      [WHAT SONARQUBE FLAGS]: SQL Injection via raw template string concatenation.
      [DEMO TALKING POINT]: Using string template concatenation for query inputs allows attackers to perform SQL Injection. Let's fix it by using a parameterized query.
      ======================================================== */
-  // const query = `SELECT * FROM registrations WHERE student_name LIKE '%${lowerSearch}%' OR event_name LIKE '%${lowerSearch}%'`;
-  // pool.query(query, (err, results) => {
-  //   if (err) {
-  //     return res.status(500).json({ error: err.message });
-  //   }
-  //   res.json(results);
-  // });
-  // [DEMO FIX - UNCOMMENT TO RESOLVE]:
-  const query = 'SELECT * FROM registrations WHERE student_name LIKE ? OR event_name LIKE ?';
-  const placeholder = `%${lowerSearch}%`;
-  pool.query(query, [placeholder, placeholder], (err, results) => {
-    if (err) return res.status(500).json({ error: err.message });
+  const query = `SELECT * FROM registrations WHERE student_name LIKE '%${lowerSearch}%' OR event_name LIKE '%${lowerSearch}%'`;
+  pool.query(query, (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
+    }
     res.json(results);
   });
+  // [DEMO FIX - UNCOMMENT TO RESOLVE]:
+  // const query = 'SELECT * FROM registrations WHERE student_name LIKE ? OR event_name LIKE ?';
+  // const placeholder = `%${lowerSearch}%`;
+  // pool.query(query, [placeholder, placeholder], (err, results) => {
+  //   if (err) return res.status(500).json({ error: err.message });
+  //   res.json(results);
+  // });
 
 });
 
