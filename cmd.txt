@@ -1,0 +1,3 @@
+win : Execute StartSonar.bat
+
+pass: Admin@7Admin@7

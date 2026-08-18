@@ -1,0 +1,18 @@
+{
+  "name": "student-event-management-demo",
+  "version": "1.0.0",
+  "description": "Student Event Management & Registration Web App for SonarQube Demo",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "dotenv": "16.4.5",
+    "express": "4.18.2",
+    "mysql2": "3.9.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

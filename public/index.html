@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Event Registration Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-title">
+        <h1>Student Event Hub</h1>
+        <p>Manage campus event registrations and check-ins</p>
+      </div>
+      <button id="theme-toggle" class="btn-theme" aria-label="Toggle Theme">
+        <span class="icon-sun">☀️</span>
+        <span class="icon-moon">🌙</span>
+      </button>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon registrations">👥</div>
+        <div class="stat-info">
+          <h3 id="stat-registrations">0</h3>
+          <p>Total Registrations</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon events">📅</div>
+        <div class="stat-info">
+          <h3 id="stat-events">0</h3>
+          <p>Active Events</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon flagged">⚠️</div>
+        <div class="stat-info">
+          <h3 id="stat-flagged">0</h3>
+          <p>Flagged Entries</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="main-content">
+      <!-- Registration Form -->
+      <aside class="form-section">
+        <div class="glass-card">
+          <h2>New Registration</h2>
+          <form id="registration-form">
+            <div class="form-group">
+              <label for="student_name">Student Full Name</label>
+              <input type="text" id="student_name" required placeholder="e.g. Sarah Connor">
+            </div>
+            <div class="form-group">
+              <label for="email">University Email</label>
+              <input type="email" id="email" required placeholder="e.g. sarah@university.edu">
+            </div>
+            <div class="form-group">
+              <label for="event_name">Select Event</label>
+              <select id="event_name" required>
+                <option value="" disabled selected>Select an event</option>
+                <option value="Annual Tech Symposium">Annual Tech Symposium</option>
+                <option value="AI Hackathon 2026">AI Hackathon 2026</option>
+                <option value="Cloud Computing Seminar">Cloud Computing Seminar</option>
+                <option value="Cyber Security Workshop">Cyber Security Workshop</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="registration_date">Registration Date</label>
+              <input type="date" id="registration_date" required>
+            </div>
+            <div class="form-group checkbox">
+              <label for="flagged">
+                <input type="checkbox" id="flagged">
+                <span>Flag for review (special accommodation, etc.)</span>
+              </label>
+            </div>
+            <button type="submit" class="btn-primary">Register Student</button>
+          </form>
+        </div>
+      </aside>
+
+      <!-- Registration Table / List -->
+      <main class="table-section">
+        <div class="glass-card">
+          <div class="table-header">
+            <h2>Registrations</h2>
+            <div class="search-box">
+              <input type="text" id="search-input" placeholder="Search by name or event...">
+              <button id="search-btn" class="btn-search">Search</button>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Email</th>
+                  <th>Event</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="table-body">
+                <tr>
+                  <td colspan="5" class="loading-state">Loading registrations...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
